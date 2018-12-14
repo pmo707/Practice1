@@ -34,7 +34,7 @@ public class Part6 {
 
         }
 
-
+        System.out.println();
     }
 
 
