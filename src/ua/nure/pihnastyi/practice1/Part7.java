@@ -38,9 +38,8 @@ public class Part7 {
     public static String digits2chars(int number) {
 
         String result = "";
-        int valueOfArticle = number;
-        int k = 0;
-        int mod = 0;
+
+        int mod;
 
         while (number != 0) {
             mod = number % RADIX;
