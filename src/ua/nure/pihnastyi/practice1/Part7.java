@@ -1,6 +1,5 @@
 package ua.nure.pihnastyi.practice1;
 
-
 public class Part7 {
 
     final static int RADIX = 26;
@@ -36,11 +35,8 @@ public class Part7 {
     }
 
     public static String digits2chars(int number) {
-
         String result = "";
-
         int mod;
-
         while (number != 0) {
             mod = number % RADIX;
             if (mod == 0) {
@@ -50,21 +46,17 @@ public class Part7 {
                 result = result + alphabet[mod];
                 number = (number - mod) / RADIX;
             }
-
         }
-
         result = new StringBuffer(result).reverse().toString();
         return result;
     }
 
     public static String rightColumn(String number) {
-
         String result = "";
         int var = 0;
         var = chars2digits(number) + 1;
         result = result + digits2chars(var);
         return result;
-
     }
 
     public static void main(String[] args) {
@@ -72,7 +64,6 @@ public class Part7 {
         int digit1 = Integer.parseInt(args[0]);
         String char1 = String.valueOf(args[1]);
         String char2 = String.valueOf(args[2]);
-
         System.out.println(digit1 + " --> " + Part7.digits2chars(digit1));
         System.out.println(char1 + " --> " + Part7.chars2digits(char1));
         System.out.println(char2 + " --> " + Part7.rightColumn(char2));

@@ -14,7 +14,6 @@ public class Part6 {
         return true;
     }
 
-
     public static void main(String[] args) {
         int k = Integer.parseInt(args[0]);
         int[] mass = new int[k];
@@ -33,7 +32,6 @@ public class Part6 {
             }
 
         }
-
         System.out.println();
     }
 
