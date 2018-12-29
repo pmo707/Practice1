@@ -10,19 +10,19 @@ public class Demo {
         Part2.main(new String[]{"3", "13"});
 
         System.out.println("=== Part3");
-        Part3.main(new String[]{"3", "3", "3", "3asd", "3asd", "13"});
+        Part3.main(new String[]{"1", "2", "3", "3asd", "3asd", "13"});
 
         System.out.println("=== Part4");
         Part4.main(new String[]{"30", "18"});
 
         System.out.println("=== Part5");
-        Part5.main(new String[]{"0122030"});
+        Part5.main(new String[]{"0111110"});
 
         System.out.println("=== Part6");
         Part6.main(new String[]{"10"});
 
         System.out.println("=== Part7");
-        Part7.main(new String[] {"28", "AA", "AA"});
+            Part7.main(new String[] {});
 
 
 

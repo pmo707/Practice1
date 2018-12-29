@@ -2,18 +2,21 @@ package ua.nure.pihnastyi.practice1;
 
 public class Part7 {
 
-    final static int RADIX = 26;
-    public static char[] alphabet = new char[27];
+    private static final int RADIX = 26;
+    private static final int ALPHABET_LENGTH =27;
+    protected static final char[] alphabet = new char[ALPHABET_LENGTH];
+    private static final int CHARACTER_DIFFERENCE = 64;
 
     public static char[] chargeArray(char[] var) {
-        var[0] = 64;
+        var[0] = CHARACTER_DIFFERENCE;
         for (int i = 1; i < var.length; i++) {
-            var[i] = (char) ((var[0] + i));
+            var[i] = (char) (var[0] + i);
         }
         return var;
     }
 
     public static int pow(int var1, int var2) {
+
         int i = 0;
         int result = 1;
         while (i < var2) {
@@ -21,51 +24,54 @@ public class Part7 {
             result = result * var1;
             i++;
         }
-
         return result;
     }
 
-    public static int chars2digits(String number) {
+    public static int str2int(String number) {
         int result = 0;
         for (int i = 0; i < number.length(); i++) {
             int power = number.length() - i - 1;
-            result = result + ((int) number.charAt(i) - 64) * pow(RADIX, power);
+            result = result + ((int) number.charAt(i) - CHARACTER_DIFFERENCE) * pow(RADIX, power);
         }
         return result;
     }
 
-    public static String digits2chars(int number) {
-        String result = "";
+    public static String int2str(int number) {
+
+        StringBuilder result = new StringBuilder();
         int mod;
         while (number != 0) {
             mod = number % RADIX;
             if (mod == 0) {
-                result = result + "Z";
-                number = (number / 26) - 1;
+                result.append("Z");
+                number = (number / RADIX) - 1;
             } else {
-                result = result + alphabet[mod];
+                result.append(alphabet[mod]);
                 number = (number - mod) / RADIX;
             }
         }
-        result = new StringBuffer(result).reverse().toString();
-        return result;
+        result.reverse();
+        return result.toString();
     }
 
     public static String rightColumn(String number) {
         String result = "";
-        int var = 0;
-        var = chars2digits(number) + 1;
-        result = result + digits2chars(var);
+        int var;
+        var = str2int(number) + 1;
+        result = result + int2str(var);
         return result;
     }
 
     public static void main(String[] args) {
         chargeArray(alphabet);
-        int digit1 = Integer.parseInt(args[0]);
-        String char1 = String.valueOf(args[1]);
-        String char2 = String.valueOf(args[2]);
-        System.out.println(digit1 + " --> " + Part7.digits2chars(digit1));
-        System.out.println(char1 + " --> " + Part7.chars2digits(char1));
-        System.out.println(char2 + " --> " + Part7.rightColumn(char2));
+        String[] testFields = {"A", "B", "Z", "AA", "AZ", "BA", "ZZ", "AAA"};
+        int intNumber;
+        String stringNumber;
+
+        for (String number : testFields) {
+            intNumber = str2int(number);
+            stringNumber = int2str(intNumber);
+            System.out.println(number + " ==> " + intNumber + " ==> " + stringNumber);
+        }
     }
 }
